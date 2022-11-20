@@ -1,95 +1,130 @@
-document.getElementById("unoV").addEventListener("click", botonDesabilitadoUno);
-document.getElementById("unoF").addEventListener("click", botonDesabilitadoUno);
-document.getElementById("dosV").addEventListener("click", botonDesabilitadoDos);
-document.getElementById("dosF").addEventListener("click", botonDesabilitadoDos);
-document.getElementById("tresV").addEventListener("click", botonDesabilitadoTres);
-document.getElementById("tresF").addEventListener("click", botonDesabilitadoTres);
-document.getElementById("reiniciar").addEventListener("click", reiniciarBotones);
-document.getElementById("enviar").addEventListener("click", comprobar);
+
+var respuestaCorrectaUno = true
+var respuestaCorrectaDos = false
+var respuestaCorrectaTres = true
+
+var miRespuestaUno = ""
+var miRespuestaDos = ""
+var miRespuestaTres = ""
+
+var unoV = document.getElementById("unoV")
+var unoF = document.getElementById("unoF")
+var dosV = document.getElementById("dosV")
+var dosF = document.getElementById("dosF")
+var tresV = document.getElementById("tresV")
+var tresF = document.getElementById("tresF")
+
+var reiniciar = document.getElementById("reiniciar")
+var enviar = document.getElementById("enviar")
+
+unoV.addEventListener("click", botonDesabilitadoUnoV);
+unoF.addEventListener("click", botonDesabilitadoUnoF);
+dosV.addEventListener("click", botonDesabilitadoDosV);
+dosF.addEventListener("click", botonDesabilitadoDosF);
+tresV.addEventListener("click", botonDesabilitadoTresV);
+tresF.addEventListener("click", botonDesabilitadoTresF);
+
+reiniciar.addEventListener("click", reiniciarBotones);
+enviar.addEventListener("click", comprobar);
 
 
+function botonDesabilitadoUnoV() {
+    miRespuestaUno = true
 
-function botonDesabilitadoUno() {
-    var btnUnoVDesabilitado = document.getElementById("unoV");
-    btnUnoVDesabilitado.disabled = true;
-
-    var btnUnoFDesabilitado = document.getElementById("unoF");
-    btnUnoFDesabilitado.disabled = true;
+    unoV.disabled = true;
+    unoF.disabled = true;
 }
 
-function botonDesabilitadoDos() {
-    var btnUnoFDesabilitado = document.getElementById("dosV");
-    btnUnoFDesabilitado.disabled = true;
+function botonDesabilitadoUnoF() {
+    miRespuestaUno = false
 
-    var btnUnoFDesabilitado = document.getElementById("dosF");
-    btnUnoFDesabilitado.disabled = true;
+    unoV.disabled = true;
+    unoF.disabled = true;
 }
 
-function botonDesabilitadoTres() {
-    var btnUnoFDesabilitado = document.getElementById("tresV");
-    btnUnoFDesabilitado.disabled = true;
+function botonDesabilitadoDosV() {
+    miRespuestaDos = true
 
-    var btnUnoFDesabilitado = document.getElementById("tresF");
-    btnUnoFDesabilitado.disabled = true;
+    dosV.disabled = true;
+    dosF.disabled = true;
 }
 
+function botonDesabilitadoDosF() {
+    miRespuestaDos = false
+
+    dosV.disabled = true;
+    dosF.disabled = true;
+}
+
+function botonDesabilitadoTresV() {
+    miRespuestaTres = true
+
+    tresV.disabled = true;
+    tresF.disabled = true;
+}
+
+function botonDesabilitadoTresF() {
+    miRespuestaTres = false
+
+    tresV.disabled = true;
+    tresF.disabled = true;
+}
 
 function reiniciarBotones() {
-    var btnUnoVDesabilitado = document.getElementById("unoV");
-    btnUnoVDesabilitado.disabled = false;
-    var btnUnoFDesabilitado = document.getElementById("unoF");
-    btnUnoFDesabilitado.disabled = false;
-    var btnUnoFDesabilitado = document.getElementById("dosV");
-    btnUnoFDesabilitado.disabled = false;
-    var btnUnoFDesabilitado = document.getElementById("dosF");
-    btnUnoFDesabilitado.disabled = false;
-    var btnUnoFDesabilitado = document.getElementById("tresV");
-    btnUnoFDesabilitado.disabled = false;
-    var btnUnoFDesabilitado = document.getElementById("tresF");
-    btnUnoFDesabilitado.disabled = false;
-}
-
+    unoV.disabled = false;
+    unoF.disabled = false;
+    dosV.disabled = false;
+    dosF.disabled = false;
+    tresV.disabled = false;
+    tresF.disabled = false;
+}+98
 
 function comprobar() {
-    var btnDesabilitadoUnoV = document.getElementById("unoV");
-    var btnDesabilitadoUnoF = document.getElementById("unoF");
-    var btnDesabilitadoDosV = document.getElementById("dosV");
-    var btnDesabilitadoDosF = document.getElementById("dosF");
-    var btnDesabilitadoTresV = document.getElementById("tresV");
-    var btnDesabilitadoTresF = document.getElementById("tresF");
+    var respondidas = 0
 
-    // evento "comprobar que ninguna respuesta fue marcada"
-    if (btnDesabilitadoUnoV.disabled == false &&
-        btnDesabilitadoDosV.disabled == false &&
-        btnDesabilitadoTresV.disabled == false) {
-        alert("No respondiste a ninguna pregunta, debes responder a todas las preguntas antes de enviar");
+    if (unoV.disabled === true) {
+        respondidas++
     }
 
+    if (dosV.disabled === true) {
+        respondidas++
+    }
 
-    // envento "enviar"
-    if (btnDesabilitadoUnoV.disabled == true && btnDesabilitadoDosV.disabled == true && btnDesabilitadoTresV.disabled == true) {
-        alert("Enviando respuesta...");
+    if (tresV.disabled === true) {
+        respondidas++
+    }
+
+    if (respondidas < 3) {
+        alert("El numero de respuestas marcadas es " + respondidas + "/3, debes responder a todas las preguntas antes de enviar");
+    } else if (respondidas === 0)  {
+        alert("No respondiste a ninguna pregunta, debes responder a todas las preguntas antes de enviar");
     } else {
+        alert("Enviando respuesta...");
 
-
-        // evento "comprobar  si hay dos respuestas marcadas"
-        if (
-            btnDesabilitadoUnoV.disabled == true && btnDesabilitadoDosV.disabled == true || btnDesabilitadoUnoV.disabled == true && btnDesabilitadoTresV.disabled == true ||
-            btnDesabilitadoDosV.disabled == true && btnDesabilitadoTresV.disabled == true
-        ) {
-            alert("El numero de respuestas marcadas es 2/3, debes responder a todas las preguntas antes de enviar");
+        var acertadas = 0
+        
+        if (miRespuestaUno === respuestaCorrectaUno) {
+            document.getElementById('pregunta1').style.color = "green"
+            acertadas++
         } else {
-            // evento "comprovar si hay una respuesta marcada" 
-            if (
-                btnDesabilitadoUnoV.disabled == true ||
-                btnDesabilitadoDosV.disabled == true ||
-                btnDesabilitadoTresV.disabled == true
-            ) {
-                alert("El numero de respuestas marcadas es 1/3, debes responder a todas las preguntas antes de enviar");
-            }
+            document.getElementById('pregunta1').style.color = "red"
         }
+    
+        if (miRespuestaDos === respuestaCorrectaDos) {
+            document.getElementById('pregunta2').style.color = "green"
+            acertadas++
+        } else {
+            document.getElementById('pregunta2').style.color = "red"
+        }
+    
+        if (miRespuestaTres === respuestaCorrectaTres) {
+            document.getElementById('pregunta3').style.color = "green"
+            acertadas++
+        } else {
+            document.getElementById('pregunta3').style.color = "red"
+        }
+
+        alert("Has acertado " + acertadas + "/3");
+    
     }
 }
-
-
-

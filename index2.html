@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <div id="botones">
+        <button>Hola 1</button><button id="btn">Hola 2</button><button>Hola 3</button><button>Hola 4</button><button>Hola 5</button><button>Hola 6</button><button>Hola 7</button><button>Hola 8</button><button>Hola 9</button><button>Hola 10</button>
+    </div>
+    <script>
+
+        const pulsa1 = function(e) {
+            console.log(e)
+        }
+
+        
+        const div = document.getElementById('botones')
+        const btn = document.getElementById('btn')
+
+
+        div.addEventListener('click', pulsa1)
+        btn.onclick = function(e) {
+            console.log("hola soy el boton ");
+        }
+
+
+
+       
+
+
+
+        
+
+        
+
+    </script>
+</body>
+</html>
