@@ -1,12 +1,15 @@
 
+// Respuestas correcta
 var respuestaCorrectaUno = true
 var respuestaCorrectaDos = false
 var respuestaCorrectaTres = true
 
+// Respuesta del usuario
 var miRespuestaUno = ""
 var miRespuestaDos = ""
 var miRespuestaTres = ""
 
+// Capturamos id y lo ponemos en una variable del mismo nombre
 var unoV = document.getElementById("unoV")
 var unoF = document.getElementById("unoF")
 var dosV = document.getElementById("dosV")
@@ -14,6 +17,7 @@ var dosF = document.getElementById("dosF")
 var tresV = document.getElementById("tresV")
 var tresF = document.getElementById("tresF")
 
+// Capturamos id de reiniciar
 var reiniciar = document.getElementById("reiniciar")
 var enviar = document.getElementById("enviar")
 
@@ -77,7 +81,7 @@ function reiniciarBotones() {
     dosF.disabled = false;
     tresV.disabled = false;
     tresF.disabled = false;
-}+98
+} +98
 
 function comprobar() {
     var respondidas = 0
@@ -96,27 +100,27 @@ function comprobar() {
 
     if (respondidas < 3) {
         alert("El numero de respuestas marcadas es " + respondidas + "/3, debes responder a todas las preguntas antes de enviar");
-    } else if (respondidas === 0)  {
+    } else if (respondidas === 0) {
         alert("No respondiste a ninguna pregunta, debes responder a todas las preguntas antes de enviar");
     } else {
         alert("Enviando respuesta...");
 
         var acertadas = 0
-        
+
         if (miRespuestaUno === respuestaCorrectaUno) {
             document.getElementById('pregunta1').style.color = "green"
             acertadas++
         } else {
             document.getElementById('pregunta1').style.color = "red"
         }
-    
+
         if (miRespuestaDos === respuestaCorrectaDos) {
             document.getElementById('pregunta2').style.color = "green"
             acertadas++
         } else {
             document.getElementById('pregunta2').style.color = "red"
         }
-    
+
         if (miRespuestaTres === respuestaCorrectaTres) {
             document.getElementById('pregunta3').style.color = "green"
             acertadas++
@@ -125,6 +129,6 @@ function comprobar() {
         }
 
         alert("Has acertado " + acertadas + "/3");
-    
+
     }
 }
